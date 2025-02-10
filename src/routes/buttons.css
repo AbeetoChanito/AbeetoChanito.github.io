@@ -1,0 +1,43 @@
+.red-btn, .blue-btn, .plus-btn, .minus-btn, .tilde-btn {
+    width: 60px;
+    height: 60px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: white;
+}
+
+.red-btn {
+    background-color: red;
+}
+
+.blue-btn {
+    background-color: blue;
+}
+
+.plus-btn {
+    background-color: green;
+}
+
+.minus-btn {
+    background-color: gray;
+}
+
+.tilde-btn {
+    background-color: orange;
+}
+
+.plus-btn:before {
+    content: "+";
+}
+
+.minus-btn:before {
+    content: "-";
+}
+
+.tilde-btn:before {
+    content: "~";
+}
