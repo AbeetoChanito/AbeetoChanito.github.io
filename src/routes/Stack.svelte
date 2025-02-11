@@ -4,7 +4,7 @@
     export let excludedColor = "none";
     export let scores: number[] = [];
 
-    let cornerModifiers = ["+", "-", ""];
+    let cornerModifiers = ["+", "", "-"];
     let colors = ["red", "blue"];
     let rings = Array(size).fill("default");
 

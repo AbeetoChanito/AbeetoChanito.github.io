@@ -23,11 +23,11 @@
 }
 
 .minus-btn {
-    background-color: gray;
+    background-color: orange;
 }
 
 .tilde-btn {
-    background-color: orange;
+    background-color: gray;
 }
 
 .plus-btn:before {

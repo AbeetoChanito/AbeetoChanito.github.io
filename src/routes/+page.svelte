@@ -1,7 +1,7 @@
 <script lang="ts">
     import Stack from "./Stack.svelte";
 
-    let autoWinners = ["red", "blue", "tie"];
+    let autoWinners = ["red", "tie", "blue"];
 
     let currentAutoWinner = "tie";
 
@@ -67,14 +67,9 @@
                     {/each}
                 </div>
             </td>
-            <td
-                colspan="1"
-                class="score"
-                style="color: {scores[0] > scores[1]
-                    ? 'red'
-                    : scores[0] < scores[1]
-                      ? 'blue'
-                      : 'black'}">{scores[0]} : {scores[1]}</td
+            <td colspan="1" class="score">
+                <span style="color: red">{scores[0]}</span> :
+                <span style="color: blue">{scores[1]}</span></td
             >
         </tr>
     </thead>
@@ -154,7 +149,7 @@
     }
 
     .scoring-table td {
-        border: 5px solid black;       
+        border: 5px solid black;
         vertical-align: top;
         text-align: center;
         padding: 10px;
@@ -167,7 +162,9 @@
         width: 66.66vw;
     }
 
-    .red-btn, .blue-btn, .tilde-btn {
+    .red-btn,
+    .blue-btn,
+    .tilde-btn {
         width: 60px;
         height: 60px;
         border: none;
@@ -201,7 +198,7 @@
         gap: 10px;
         justify-content: center;
     }
-    
+
     .score {
         font-size: 80px;
     }
