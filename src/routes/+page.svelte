@@ -41,7 +41,6 @@
         }
 
         scores = [redScore, blueScore];
-        console.log("update");
     }
 </script>
 
