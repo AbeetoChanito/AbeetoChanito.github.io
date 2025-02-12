@@ -161,36 +161,6 @@
         width: 66.66vw;
     }
 
-    .red-btn,
-    .blue-btn,
-    .tilde-btn {
-        width: 60px;
-        height: 60px;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 40px;
-        color: white;
-    }
-
-    .red-btn {
-        background-color: red;
-    }
-
-    .blue-btn {
-        background-color: blue;
-    }
-
-    .tilde-btn {
-        background-color: orange;
-    }
-
-    .tilde-btn:before {
-        content: "~";
-    }
-
     .bonus-selector {
         display: flex;
         align-items: center;
