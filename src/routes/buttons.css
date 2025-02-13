@@ -1,8 +1,11 @@
-.red-btn, .blue-btn, .plus-btn, .minus-btn, .tilde-btn {
-    width: 60px;
+.red-btn,
+.blue-btn,
+.plus-btn,
+.minus-btn,
+.tilde-btn {
+    width: 33.33%;
     height: 60px;
     border: none;
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,11 +1,14 @@
 <script lang="ts">
     export let size = 6;
+    export let name = "";
     export let cornerModifier = true;
     export let excludedColor = "none";
     export let scores: number[] = [];
 
-    let cornerModifiers = ["+", "", "-"];
-    let colors = ["red", "blue"];
+    let cornerModifiers = ["", "+", "-"];
+    let cornerModifierIndex = 0;
+
+    let colors = ["red", "none", "blue"];
     let rings = Array(size).fill("default");
 
     let currentCornerModifier = "";
@@ -28,8 +31,12 @@
         calculateScore();
     }
 
-    function setCornerModifier(modifier: string) {
-        currentCornerModifier = modifier;
+    function cycleCornerModifier() {
+        if (!cornerModifier) {
+            return;
+        }
+        cornerModifierIndex = (cornerModifierIndex + 1) % 3;
+        currentCornerModifier = cornerModifiers[cornerModifierIndex];
         calculateScore();
     }
 
@@ -65,8 +72,22 @@
     }
 </script>
 
+<div class="name-display">
+    {name}
+    {#if cornerModifier}
+    <span
+        class={cornerModifierIndex === 0
+            ? "tilde-btn"
+            : cornerModifierIndex === 1
+              ? "plus-btn"
+              : "minus-btn"}
+        style="width: 60px !important;"
+    ></span>
+    {/if}
+</div>
+
 <div class="container">
-    <div class="stack-wrapper">
+    <button class="stack-wrapper" on:click={() => cycleCornerModifier()}>
         <div class="stack">
             {#each rings as color, i}
                 <div
@@ -79,47 +100,38 @@
                 ></div>
             {/each}
         </div>
-    </div>
-
-    <!-- Side Buttons -->
-    <div class="side-controls">
-        {#each colors as color, _}
-            {#if color != excludedColor}
-                <button class="{color}-btn" on:click={() => addSquare(color)}
-                ></button>
-            {/if}
-        {/each}
-        <button
-            class="minus-btn"
-            on:click={() => {
-                removeSquare();
-            }}
-        >
-        </button>
-    </div>
+    </button>
 </div>
 
-{#if cornerModifier}
-    <div class="bottom-controls">
-        {#each cornerModifiers as modifier, _}
+<div class="bottom-controls">
+    {#each colors as color, _}
+        {#if color !== excludedColor && color !== "none"}
             <button
-                class={modifier === "+"
-                    ? "plus-btn"
-                    : modifier === "-"
-                      ? "minus-btn"
-                      : "tilde-btn"}
-                style="border: {currentCornerModifier == modifier
-                    ? '5px solid black'
-                    : ''}"
-                on:click={() => setCornerModifier(modifier)}
-            >
-            </button>
-        {/each}
-    </div>
-{/if}
+                class="{color}-btn"
+                on:click={() => addSquare(color)}
+                aria-label="add {color} ring"
+            ></button>
+        {/if}
+        {#if color === "none"}
+            <button
+                class="minus-btn"
+                on:click={() => {
+                    removeSquare();
+                }}
+                aria-label="remove ring"
+            ></button>
+        {/if}
+    {/each}
+</div>
 
 <style>
     @import "./buttons.css";
+
+    .name-display {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
 
     .container {
         display: flex;
@@ -134,6 +146,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        all: unset;
     }
 
     .stack {
@@ -150,6 +163,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 5px;
     }
 
     .side-controls {

@@ -46,7 +46,8 @@
 
 <table class="scoring-table">
     <thead>
-        <tr> </tr><tr>
+        <tr></tr>
+        <tr>
             <td colspan="2">
                 Auton Bonus
                 <div class="bonus-selector">
@@ -58,59 +59,64 @@
                                   ? "blue-btn"
                                   : "tilde-btn"}
                             style="border: {currentAutoWinner == autoWinner
-                                ? '5px solid black'
+                                ? '5px solid white'
                                 : ''}"
                             on:click={() => setAutoWinner(autoWinner)}
-                        >
-                        </button>
+                            aria-label="{autoWinner} bonus"
+                        ></button>
                     {/each}
                 </div>
             </td>
             <td colspan="1" class="score">
-                <span style="color: red">{scores[0]}</span> :
-                <span style="color: blue">{scores[1]}</span></td
-            >
+                <span style="color: red">{scores[0]}</span>
+                :
+                <span style="color: blue">{scores[1]}</span>
+            </td>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Goal 1 <Stack bind:scores={mobileGoalScores[0]} /></td>
-            <td
-                >Wall 1 <Stack
+            <td><Stack bind:scores={mobileGoalScores[0]} name="Goal 1" /></td>
+            <td>
+                <Stack
                     bind:scores={mobileGoalScores[1]}
                     cornerModifier={false}
-                /></td
-            >
-            <td>Goal 3 <Stack bind:scores={mobileGoalScores[2]} /></td>
+                    name="Wall 1"
+                />
+            </td>
+            <td><Stack bind:scores={mobileGoalScores[2]} name="Goal 3"/></td>
         </tr>
         <tr>
-            <td>Goal 2 <Stack bind:scores={mobileGoalScores[3]} /></td>
-            <td
-                >Wall 2 <Stack
+            <td><Stack bind:scores={mobileGoalScores[3]} name="Goal 2"/></td>
+            <td>
+                <Stack
                     bind:scores={mobileGoalScores[4]}
                     cornerModifier={false}
-                /></td
-            >
-            <td>Goal 4 <Stack bind:scores={mobileGoalScores[5]} /></td>
+                    name="Wall 2"
+                />
+            </td>
+            <td><Stack bind:scores={mobileGoalScores[5]} name="Goal 4"/></td>
         </tr>
         <tr>
-            <td
-                >Red Stake <Stack
+            <td>
+                <Stack
                     bind:scores={mobileGoalScores[6]}
                     size={2}
                     cornerModifier={false}
                     excludedColor="blue"
-                /></td
-            >
-            <td>Goal 5 <Stack bind:scores={mobileGoalScores[7]} /></td>
-            <td
-                >Blue Stake <Stack
+                    name="Red"
+                />
+            </td>
+            <td><Stack bind:scores={mobileGoalScores[7]} name="Goal 5"/></td>
+            <td>
+                <Stack
                     bind:scores={mobileGoalScores[8]}
                     size={2}
                     cornerModifier={false}
                     excludedColor="red"
-                /></td
-            >
+                    name="Blue"
+                />
+            </td>
         </tr>
     </tbody>
 </table>
