@@ -110,6 +110,7 @@
                 class="{color}-btn"
                 on:click={() => addSquare(color)}
                 aria-label="add {color} ring"
+                style="{excludedColor !== "none" ? "width: 50% !important;" : ""}"
             ></button>
         {/if}
         {#if color === "none"}
@@ -119,6 +120,7 @@
                     removeSquare();
                 }}
                 aria-label="remove ring"
+                style="{excludedColor !== "none" ? "width: 50% !important;" : ""}"
             ></button>
         {/if}
     {/each}
@@ -157,7 +159,7 @@
     }
 
     .ring {
-        width: 200px;
+        width: 300px;
         height: 20px;
         border: none;
         display: flex;
