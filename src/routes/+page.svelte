@@ -68,9 +68,24 @@
                 </div>
             </td>
             <td colspan="1" class="score">
-                <span style="color: red">{scores[0]}</span>
-                :
-                <span style="color: blue">{scores[1]}</span>
+                <span
+                    style="margin-bottom: 0; display: flex; flex-direction: column; align-items: center;"
+                >
+                    <span>
+                        <span style="color: red;">{scores[0]}</span>
+                        :
+                        <span style="color: blue">{scores[1]}</span>
+                    </span>
+                    <span
+                        style="font-size: 45px; color: {scores[0] > scores[1]
+                            ? 'red'
+                            : scores[0] === scores[1]
+                              ? 'black'
+                              : 'blue'}"
+                    >
+                        up: {Math.abs(scores[0] - scores[1])}
+                    </span>
+                </span>
             </td>
         </tr>
     </thead>
@@ -84,10 +99,10 @@
                     name="Wall 1"
                 />
             </td>
-            <td><Stack bind:scores={mobileGoalScores[2]} name="Goal 3"/></td>
+            <td><Stack bind:scores={mobileGoalScores[2]} name="Goal 3" /></td>
         </tr>
         <tr>
-            <td><Stack bind:scores={mobileGoalScores[3]} name="Goal 2"/></td>
+            <td><Stack bind:scores={mobileGoalScores[3]} name="Goal 2" /></td>
             <td>
                 <Stack
                     bind:scores={mobileGoalScores[4]}
@@ -95,7 +110,7 @@
                     name="Wall 2"
                 />
             </td>
-            <td><Stack bind:scores={mobileGoalScores[5]} name="Goal 4"/></td>
+            <td><Stack bind:scores={mobileGoalScores[5]} name="Goal 4" /></td>
         </tr>
         <tr>
             <td>
@@ -107,7 +122,7 @@
                     name="Red"
                 />
             </td>
-            <td><Stack bind:scores={mobileGoalScores[7]} name="Goal 5"/></td>
+            <td><Stack bind:scores={mobileGoalScores[7]} name="Goal 5" /></td>
             <td>
                 <Stack
                     bind:scores={mobileGoalScores[8]}

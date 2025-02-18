@@ -75,14 +75,14 @@
 <div class="name-display">
     {name}
     {#if cornerModifier}
-    <span
-        class={cornerModifierIndex === 0
-            ? "tilde-btn"
-            : cornerModifierIndex === 1
-              ? "plus-btn"
-              : "minus-btn"}
-        style="width: 60px !important;"
-    ></span>
+        <span
+            class={cornerModifierIndex === 0
+                ? "tilde-btn"
+                : cornerModifierIndex === 1
+                  ? "plus-btn"
+                  : "minus-btn"}
+            style="width: 60px !important;"
+        ></span>
     {/if}
 </div>
 
@@ -110,7 +110,7 @@
                 class="{color}-btn"
                 on:click={() => addSquare(color)}
                 aria-label="add {color} ring"
-                style="{excludedColor !== "none" ? "width: 50% !important;" : ""}"
+                style={excludedColor !== "none" ? "width: 50% !important;" : ""}
             ></button>
         {/if}
         {#if color === "none"}
@@ -120,7 +120,7 @@
                     removeSquare();
                 }}
                 aria-label="remove ring"
-                style="{excludedColor !== "none" ? "width: 50% !important;" : ""}"
+                style={excludedColor !== "none" ? "width: 50% !important;" : ""}
             ></button>
         {/if}
     {/each}
